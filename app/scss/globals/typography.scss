@@ -1,15 +1,26 @@
 @use '../util' as *;
 
+body {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
 h1,
 h2,
 h3 {
   margin: 0;
   padding: 0;
-  line-height: 1.1;
 }
 
 a,
 a:visited,
 a:active {
   text-decoration: none;
+}
+
+// HEADER TYPOGRAPHY
+.header__logo-text {
+  color: var(--white);
+  font-size: 3.2rem;
+  font-weight: 700;
+  letter-spacing: 1.3rem;
 }
