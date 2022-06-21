@@ -16,6 +16,7 @@ body {
   margin: 0;
   padding: 0 2rem;
   position: relative;
+  background-color: var(--VeryDarkBlue);
 }
 
 body::before {
@@ -23,10 +24,10 @@ body::before {
   background-image: url('../images/bg-desktop-dark.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
-  height: 50rem;
+  background-position: top center;
+  height: 30rem;
   width: 100%;
-  position: absolute;
+  position: fixed;
   z-index: -1;
   top: 0;
   left: 0;

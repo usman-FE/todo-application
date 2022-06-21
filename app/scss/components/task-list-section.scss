@@ -1,5 +1,5 @@
 .list-section {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
 }
 
 .task {
@@ -15,7 +15,7 @@
   &__item {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid var(--VeryDarkGrayishBlue);
+    border-bottom: 1px solid var(--VeryDarkGrayishBlueD2);
   }
 
   &__item:hover .controls {
@@ -25,7 +25,8 @@
 
   &__description {
     flex-grow: 1;
-    color: rgb(202, 205, 232);
+    color: var(--LightGrayishBlueD1);
+    font-weight: 400;
     cursor: pointer;
   }
 
@@ -33,7 +34,7 @@
     width: 2.6rem;
     height: 2.6rem;
     display: block;
-    background-color: var(--VeryDarkGrayishBlue);
+    background-color: var(--VeryDarkGrayishBlueD2);
     background-image: none;
     mask-repeat: no-repeat;
     mask-position: center center;
@@ -51,6 +52,24 @@
   &__edit,
   &__delete {
     padding: 2rem;
+    position: relative;
+  }
+
+  &__checkbox::after {
+    content: '';
+    position: absolute;
+    width: 2.6rem;
+    height: 2.6rem;
+    left: 50%;
+    top: 50%;
+    background-image: url('../images/icon-check.svg'), var(--CheckBackground);
+    background-repeat: no-repeat;
+    background-position: center center;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    visibility: var(--visibility);
+    opacity: var(--opacity);
+    display: var(--display);
   }
 }
 
@@ -61,6 +80,7 @@
 
 .circle-icon {
   mask-image: url('../images/circle.svg');
+  mask-size: 90% !important;
 }
 
 .delete-icon {
@@ -69,4 +89,10 @@
 
 .edit-icon {
   mask-image: url('../images/pencil.svg');
+}
+
+.task-done {
+  color: var(--VeryDarkGrayishBlueD1);
+  text-decoration: line-through;
+  font-weight: 700;
 }
