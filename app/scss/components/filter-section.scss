@@ -2,11 +2,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--VeryDarkDesaturatedBlue);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 2rem;
+  flex-wrap: wrap;
 }
 
-.filter__list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
+.filter {
+  &__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+
+  &__text {
+    padding: 2rem;
+  }
 }

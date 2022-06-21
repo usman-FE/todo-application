@@ -25,7 +25,21 @@ a:active {
   letter-spacing: 1.3rem;
 }
 
+// TASK TYPOGRAPHY
+
 .task__description {
   font-size: 1.6rem;
   font-weight: 400;
+}
+
+// FILTER TYPOGRAPHY
+.filter__text {
+  font-size: 1.4rem;
+  color: var(--VeryDarkGrayishBlue);
+  font-weight: 700;
+  transition: all 0.3s ease-in-out;
+}
+
+.filter__text:hover {
+  color: var(--white);
 }

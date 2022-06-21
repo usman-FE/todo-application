@@ -10,6 +10,17 @@
     cursor: pointer;
   }
 
+  &__circle-img {
+    width: 2.6rem;
+    height: 2.6rem;
+    display: block;
+    background: var(--VeryDarkGrayishBlue);
+    mask-image: url('../images/circle.svg');
+    mask-repeat: no-repeat;
+    mask-position: center center;
+    border-radius: 50%;
+  }
+
   &__area {
     flex-grow: 1;
     display: flex;
