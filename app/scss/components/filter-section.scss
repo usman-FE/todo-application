@@ -1,3 +1,5 @@
+@use '../globals/' as *;
+
 .filter-section {
   display: flex;
   justify-content: space-between;
@@ -21,11 +23,21 @@
     padding: 2rem;
   }
 
+  &__large {
+    @media only screen and (max-width: $sm) {
+      display: none;
+    }
+  }
+
   &__small {
     margin-top: 1.5rem;
     background-color: var(--VeryDarkDesaturatedBlue);
     padding: 1.5rem 0;
     border-radius: 5px;
     display: none;
+
+    @media only screen and (max-width: $sm) {
+      display: flex;
+    }
   }
 }

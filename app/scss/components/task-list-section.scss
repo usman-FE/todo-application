@@ -1,3 +1,5 @@
+@use '../globals/' as *;
+
 .list-section {
   margin-top: 2.5rem;
 }
@@ -42,6 +44,10 @@
     flex-grow: 0;
     mask-size: 75%;
     transition: all 0.3s ease-in-out;
+
+    @media only screen and (max-width: $sm) {
+      mask-size: 65%;
+    }
   }
 
   &__icon:hover {
@@ -53,10 +59,13 @@
   &__delete {
     padding: 2rem;
     position: relative;
+
+    @media only screen and (max-width: $sm) {
+      padding: 1.35rem 1rem;
+    }
   }
 
-  &__checkbox::after {
-    content: '';
+  &__checked {
     position: absolute;
     width: 2.6rem;
     height: 2.6rem;
@@ -67,20 +76,32 @@
     background-position: center center;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    visibility: var(--visibility);
-    opacity: var(--opacity);
-    display: var(--display);
+    z-index: 5;
+
+    @media only screen and (max-width: $sm) {
+      width: 2.35rem;
+      height: 2.35rem;
+    }
   }
 }
 
 .controls {
   visibility: hidden;
   opacity: 0;
+
+  @media only screen and (max-width: $md) {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 .circle-icon {
   mask-image: url('../images/circle.svg');
   mask-size: 90% !important;
+
+  @media only screen and (max-width: $sm) {
+    mask-size: 75% !important;
+  }
 }
 
 .delete-icon {

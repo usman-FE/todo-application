@@ -1,4 +1,5 @@
 @use '../util' as *;
+@use './globals/breakpoints' as *;
 
 body {
   font-family: 'Josefin Sans', sans-serif;
@@ -30,6 +31,10 @@ a:active {
 .task__description {
   font-size: 1.6rem;
   font-weight: 400;
+
+  @media only screen and (max-width: $sm) {
+    font-size: 1.2rem;
+  }
 }
 
 // FILTER TYPOGRAPHY
