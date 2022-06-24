@@ -1,34 +1,34 @@
 // Initialize modules
-const { src, dest, watch, series } = require("gulp");
-const sass = require("gulp-sass")(require("sass"));
-const postcss = require("gulp-postcss");
-const autoprefixer = require("autoprefixer");
-const cssnano = require("cssnano");
-const babel = require("gulp-babel");
-const terser = require("gulp-terser");
-const imagemin = require("gulp-imagemin");
-const imagewebp = require("gulp-webp");
-const browsersync = require("browser-sync").create();
+const { src, dest, watch, series } = require('gulp');
+const sass = require('gulp-sass')(require('sass'));
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
+const babel = require('gulp-babel');
+const terser = require('gulp-terser');
+const imagemin = require('gulp-imagemin');
+const imagewebp = require('gulp-webp');
+const browsersync = require('browser-sync').create();
 
 // Sass Task
 function scssTask() {
-  return src("app/scss/style.scss", { sourcemaps: true })
+  return src('app/scss/style.scss', { sourcemaps: true })
     .pipe(sass())
     .pipe(postcss([autoprefixer(), cssnano()]))
-    .pipe(dest("dist/css", { sourcemaps: "." }));
+    .pipe(dest('dist/css', { sourcemaps: '.' }));
 }
 
 // JavaScript Task
 function jsTask() {
-  return src("app/js/script.js", { sourcemaps: true })
-    .pipe(babel({ presets: ["@babel/preset-env"] }))
+  return src('app/js/script.js', { sourcemaps: true })
+    .pipe(babel({ presets: ['@babel/preset-env'] }))
     .pipe(terser())
-    .pipe(dest("dist/js", { sourcemaps: "." }));
+    .pipe(dest('dist/js', { sourcemaps: '.' }));
 }
 
 // Images optimization
 function imageOptimize() {
-  return src("images/**/*.{jpg,png,svg}")
+  return src('images/**/*.{jpg,png,svg}')
     .pipe(
       imagemin([
         imagemin.mozjpeg({
@@ -40,31 +40,31 @@ function imageOptimize() {
         }),
       ])
     )
-    .pipe(dest("dist/images"));
+    .pipe(dest('dist/images'));
 }
 
 // Images conversion
 function webpImage() {
-  return src("dist/images/**/*.{jpg,png}")
+  return src('dist/images/**/*.{jpg,png}')
     .pipe(imagewebp())
-    .pipe(dest("dist/images"));
+    .pipe(dest('dist/images'));
 }
 
 // COPY HTML TO DIST
 function copyHTML() {
-  return src("*.html").pipe(dest("dist"));
+  return src('*.html').pipe(dest('dist'));
 }
 
 // Browsersync
 function browserSyncServe(cb) {
   browsersync.init({
     server: {
-      baseDir: "dist",
+      baseDir: 'dist',
     },
     notify: {
       styles: {
-        top: "auto",
-        bottom: "0",
+        top: 'auto',
+        bottom: '0',
       },
     },
   });
@@ -77,10 +77,10 @@ function browserSyncReload(cb) {
 
 // Watch Task
 function watchTask() {
-  watch("*.html", copyHTML);
-  watch("dist/*.html", browserSyncReload);
+  watch('*.html', copyHTML);
+  watch('dist/*.html', browserSyncReload);
   watch(
-    ["app/scss/**/*.scss", "app/**/*.js", "images/**/*.{jpg,png,svg}"],
+    ['app/scss/**/*.scss', 'app/**/*.js', 'images/**/*.{jpg,png,svg}'],
     series(scssTask, jsTask, imageOptimize, webpImage, browserSyncReload)
   );
 }
@@ -95,3 +95,6 @@ exports.default = series(
   browserSyncServe,
   watchTask
 );
+
+// Build Gulp Task
+exports.build = series(copyHTML, scssTask, jsTask, imageOptimize, webpImage);
