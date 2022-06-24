@@ -97,6 +97,17 @@
   }
 }
 
+@media only screen and (max-width: $md) {
+  .controls {
+    visibility: hidden;
+    opacity: 0;
+  }
+  .task__item:hover .controls {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
 .circle-icon {
   mask-image: url('../images/circle.svg');
   mask-size: 90% !important;
