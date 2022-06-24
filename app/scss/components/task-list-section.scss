@@ -20,11 +20,6 @@
     border-bottom: 1px solid var(--VeryDarkGrayishBlueD2);
   }
 
-  &__item:hover .controls {
-    visibility: visible;
-    opacity: 1;
-  }
-
   &__description {
     flex-grow: 1;
     color: var(--LightGrayishBlueD1);
@@ -86,10 +81,17 @@
 }
 
 .controls {
-  visibility: hidden;
-  opacity: 0;
+  visibility: visible;
+  opacity: 1;
+}
 
-  @media only screen and (max-width: $md) {
+@media (hover: hover) {
+  .controls {
+    /* Styles for hover-able devices */
+    visibility: hidden;
+    opacity: 0;
+  }
+  .task__item:hover .controls {
     visibility: visible;
     opacity: 1;
   }
