@@ -1,3 +1,1 @@
-import { obj } from "./object.js";
-
-console.log(obj);
+console.log('test');

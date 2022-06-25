@@ -4,11 +4,15 @@ const sass = require('gulp-sass')(require('sass'));
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
-const babel = require('gulp-babel');
-const terser = require('gulp-terser');
 const imagemin = require('gulp-imagemin');
 const imagewebp = require('gulp-webp');
 const browsersync = require('browser-sync').create();
+const browserify = require('browserify');
+const babelify = require('babelify');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+const uglify = require('gulp-uglify');
+const sourcemaps = require('gulp-sourcemaps');
 
 // Sass Task
 function scssTask() {
@@ -19,11 +23,27 @@ function scssTask() {
 }
 
 // JavaScript Task
+// function jsTask() {
+//   return src('app/js/script.js', { sourcemaps: true })
+//     .pipe(babel({ presets: ['@babel/preset-env'] }))
+//     .pipe(terser())
+//     .pipe(dest('dist/js', { sourcemaps: '.' }));
+// }
+
 function jsTask() {
-  return src('app/js/script.js', { sourcemaps: true })
-    .pipe(babel({ presets: ['@babel/preset-env'] }))
-    .pipe(terser())
-    .pipe(dest('dist/js', { sourcemaps: '.' }));
+  return browserify({
+    entries: 'app/js/' + 'script.js',
+  })
+    .transform(babelify, {
+      presets: ['@babel/preset-env'],
+    })
+    .bundle()
+    .pipe(source('script.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(uglify())
+    .pipe(sourcemaps.write('.'))
+    .pipe(dest('dist/js'));
 }
 
 // Images optimization
