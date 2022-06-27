@@ -32,13 +32,13 @@ function scssTask() {
 
 function jsTask() {
   return browserify({
-    entries: 'app/js/' + 'script.js',
+    entries: 'app/js/' + 'controller.js',
   })
     .transform(babelify, {
       presets: ['@babel/preset-env'],
     })
     .bundle()
-    .pipe(source('script.js'))
+    .pipe(source('controller.js'))
     .pipe(buffer())
     .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(uglify())
