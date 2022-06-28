@@ -62,3 +62,31 @@
     --toggler: var(--light-toggle);
   }
 }
+
+body.light {
+  --bacground-color: var(--VeryLightGrayishBlue);
+  --bacground-image-lg: var(--light-bg-desktop);
+  --bacground-image-sm: var(--light-bg-mobile);
+  --text-color: var(--VeryDarkGrayishBlueL1);
+  --field-bg: var(--VeryLightGray);
+  --border-color: var(--VeryLightGrayishBlue);
+  --task-done: var(--LightGrayishBlueL1);
+  --circle-color: var(--LightGrayishBlueL1);
+  --filter-text: var(--DarkGrayishBlueL2);
+  --filter-text-hover: var(--VeryDarkGrayishBlueL1);
+  --toggler: var(--light-toggle);
+}
+
+body.dark {
+  --bacground-color: var(--VeryDarkBlue);
+  --bacground-image-lg: var(--dark-bg-desktop);
+  --bacground-image-sm: var(--dark-bg-mobile);
+  --text-color: var(--LightGrayishBlueD1);
+  --field-bg: var(--VeryDarkDesaturatedBlue);
+  --border-color: var(--VeryDarkGrayishBlueD2);
+  --task-done: var(--VeryDarkGrayishBlueD1);
+  --circle-color: var(--VeryDarkGrayishBlueD2);
+  --filter-text: var(--VeryDarkGrayishBlueD1);
+  --filter-text-hover: var(--LightGrayishBlueHover);
+  --toggler: var(--dark-toggle);
+}

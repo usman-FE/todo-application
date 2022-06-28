@@ -35,20 +35,10 @@ body {
   z-index: -1;
   top: 0;
   left: 0;
-}
 
-.bg-dark {
   background-image: var(--bacground-image-lg);
 
   @media only screen and (max-width: $sm) {
     background-image: var(--bacground-image-sm);
-  }
-}
-
-.bg-light {
-  background-image: url('../images/bg-desktop-light.jpg');
-
-  @media only screen and (max-width: $sm) {
-    background-image: url('../images/bg-mobile-light.jpg');
   }
 }
