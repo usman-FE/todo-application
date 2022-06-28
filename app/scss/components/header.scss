@@ -11,5 +11,20 @@
   &__toggler {
     display: block;
     cursor: pointer;
+    outline: none;
+    height: 2.6rem;
+    width: 2.6rem;
+    background-color: transparent;
+    border: none;
+  }
+
+  &__toggler-img {
+    background-image: var(--toggler);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+    display: block;
   }
 }

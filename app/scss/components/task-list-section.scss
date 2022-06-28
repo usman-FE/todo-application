@@ -11,18 +11,18 @@
     padding: 0;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    background-color: var(--VeryDarkDesaturatedBlue);
+    background-color: var(--field-bg);
   }
 
   &__item {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid var(--VeryDarkGrayishBlueD2);
+    border-bottom: 1px solid var(--border-color);
   }
 
   &__description {
     flex-grow: 1;
-    color: var(--LightGrayishBlueD1);
+    color: var(--text-color);
     font-weight: 400;
     cursor: pointer;
   }
@@ -31,7 +31,7 @@
     width: 2.6rem;
     height: 2.6rem;
     display: block;
-    background-color: var(--VeryDarkGrayishBlueD2);
+    background-color: var(--circle-color);
     background-image: none;
     mask-repeat: no-repeat;
     mask-position: center center;
@@ -126,7 +126,7 @@
 }
 
 .task-done {
-  color: var(--VeryDarkGrayishBlueD1);
+  color: var(--task-done);
   text-decoration: line-through;
   font-weight: 700;
 }

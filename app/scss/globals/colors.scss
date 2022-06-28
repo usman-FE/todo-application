@@ -1,3 +1,5 @@
+@use '../globals/breakpoints' as *;
+
 :root {
   --white: hsl(0, 0%, 100%);
   --black: hsl(0, 0%, 0%);
@@ -12,8 +14,11 @@
   --VeryLightGray: hsl(0, 0%, 98%);
   --VeryLightGrayishBlue: hsl(236, 33%, 92%);
   --LightGrayishBlueL1: hsl(233, 11%, 84%);
-  --DarkGrayishBlue: hsl(236, 9%, 61%);
+  --DarkGrayishBlueL2: hsl(236, 9%, 61%);
   --VeryDarkGrayishBlueL1: hsl(235, 19%, 35%);
+  --light-bg-desktop: url('../images/bg-desktop-light.jpg');
+  --light-bg-mobile: url('../images/bg-mobile-light.jpg');
+  --light-toggle: url('../images/icon-moon.svg');
 
   // ### Dark Theme
 
@@ -21,13 +26,39 @@
   --VeryDarkDesaturatedBlue: hsl(235, 24%, 19%);
   --LightGrayishBlueD1: hsl(234, 39%, 85%);
   --LightGrayishBlueHover: hsl(236, 33%, 92%);
-  --DarkGrayishBlue: hsl(234, 11%, 52%);
+  --DarkGrayishBlueD3: hsl(234, 11%, 52%);
   --VeryDarkGrayishBlueD1: hsl(233, 14%, 35%);
   --VeryDarkGrayishBlueD2: hsl(237, 14%, 26%);
+  --dark-bg-desktop: url('../images/bg-desktop-dark.jpg');
+  --dark-bg-mobile: url('../images/bg-mobile-dark.jpg');
+  --dark-toggle: url('../images/icon-sun.svg');
 
-  // VISIBILITY
+  // THEME
+  --bacground-color: var(--VeryDarkBlue);
+  --bacground-image-lg: var(--dark-bg-desktop);
+  --bacground-image-sm: var(--dark-bg-mobile);
+  --text-color: var(--LightGrayishBlueD1);
+  --field-bg: var(--VeryDarkDesaturatedBlue);
+  --border-color: var(--VeryDarkGrayishBlueD2);
+  --task-done: var(--VeryDarkGrayishBlueD1);
+  --circle-color: var(--VeryDarkGrayishBlueD2);
+  --filter-text: var(--VeryDarkGrayishBlueD1);
+  --filter-text-hover: var(--LightGrayishBlueHover);
+  --toggler: var(--dark-toggle);
+}
 
-  --visibility: visible;
-  --display: none;
-  --opacity: 0;
+@media (prefers-color-scheme: light) {
+  :root {
+    --bacground-color: var(--VeryLightGrayishBlue);
+    --bacground-image-lg: var(--light-bg-desktop);
+    --bacground-image-sm: var(--light-bg-mobile);
+    --text-color: var(--VeryDarkGrayishBlueL1);
+    --field-bg: var(--VeryLightGray);
+    --border-color: var(--VeryLightGrayishBlue);
+    --task-done: var(--LightGrayishBlueL1);
+    --circle-color: var(--LightGrayishBlueL1);
+    --filter-text: var(--DarkGrayishBlueL2);
+    --filter-text-hover: var(--VeryDarkGrayishBlueL1);
+    --toggler: var(--light-toggle);
+  }
 }

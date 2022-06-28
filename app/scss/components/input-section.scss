@@ -2,7 +2,7 @@
   display: flex;
   margin-top: 5rem;
   border-radius: 5px;
-  background-color: var(--VeryDarkDesaturatedBlue);
+  background-color: var(--field-bg);
 
   &__circle {
     flex-grow: 0;
@@ -14,7 +14,7 @@
     width: 2.6rem;
     height: 2.6rem;
     display: block;
-    background: var(--VeryDarkGrayishBlueD2);
+    background: var(--circle-color);
     mask-image: url('../images/circle.svg');
     mask-repeat: no-repeat;
     mask-size: 90%;
@@ -35,7 +35,7 @@
     border: none;
     font-family: inherit;
     font-size: 1.6rem;
-    color: var(--LightGrayishBlueD1);
+    color: var(--text-color);
   }
 
   &__submit {

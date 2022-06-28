@@ -4,10 +4,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--VeryDarkDesaturatedBlue);
+  background-color: var(--field-bg);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   flex-wrap: wrap;
+  padding: 0 2rem;
 }
 
 .filter {
@@ -17,10 +18,15 @@
     align-items: center;
     list-style: none;
     flex-wrap: wrap;
+    gap: 2rem;
+
+    @media only screen and (max-width: $sm) {
+      justify-content: space-evenly;
+    }
   }
 
   &__text {
-    padding: 2rem;
+    padding: 2rem 0rem;
   }
 
   &__large {
@@ -31,8 +37,8 @@
 
   &__small {
     margin-top: 1.5rem;
-    background-color: var(--VeryDarkDesaturatedBlue);
-    padding: 1.5rem 0;
+    background-color: var(--field-bg);
+    padding: 1.5rem 0rem;
     border-radius: 5px;
     display: none;
 

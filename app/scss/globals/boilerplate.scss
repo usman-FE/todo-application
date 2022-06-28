@@ -22,7 +22,7 @@ body {
   margin: 0;
   padding: 0 2rem;
   position: relative;
-  background-color: var(--VeryDarkBlue);
+  background-color: var(--bacground-color);
 }
 
 .bg {
@@ -38,10 +38,10 @@ body {
 }
 
 .bg-dark {
-  background-image: url('../images/bg-desktop-dark.jpg');
+  background-image: var(--bacground-image-lg);
 
   @media only screen and (max-width: $sm) {
-    background-image: url('../images/bg-mobile-dark.jpg');
+    background-image: var(--bacground-image-sm);
   }
 }
 

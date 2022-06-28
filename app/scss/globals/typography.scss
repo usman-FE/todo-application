@@ -40,11 +40,11 @@ a:active {
 // FILTER TYPOGRAPHY
 .filter__text {
   font-size: 1.4rem;
-  color: var(--VeryDarkGrayishBlueD1);
+  color: var(--filter-text);
   font-weight: 700;
   transition: all 0.3s ease-in-out;
 }
 
 .filter__text:hover {
-  color: var(--LightGrayishBlueHover);
+  color: var(--filter-text-hover);
 }
