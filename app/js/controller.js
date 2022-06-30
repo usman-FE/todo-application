@@ -1,9 +1,11 @@
+import * as model from './model.js';
 import { todoTasks } from './todoData.js';
+import taskView from './views/taskView.js';
+
 
 const toggle = document.querySelector('#toggle');
 const body = document.querySelector('body');
 const colorMode = localStorage.getItem('colorMode');
-const taskContainer = document.querySelector('.task__list');
 
 // THEME TOGGLE
 
@@ -29,33 +31,25 @@ window.addEventListener('load', function () {
   }
 });
 
-const tasks = todoTasks.todos;
-console.log(tasks);
+///////////////////////////////////////////////////////
+// CONTROLLER LOGIC///////////////////////////////////
+/////////////////////////////////////////////////////
 
 
-const generateMarkup = function (task) {
-  return `
-  <li class="task__item">
-  <div class="task__checkbox">
-  <span class="${task.isCompleted ? 'task__checked' : ''}"></span>
-  <a href="#" class="task__icon circle-icon">&nbsp;</a>
-  </div>
-  <p class="task__description ${task.isCompleted ? 'task-done' : ''}">${task.task}</p>
-  <div class="task__edit">
-  <a href="#" class="task__icon edit-icon controls">&nbsp;</a>
-  </div>
-  <div class="task__delete">
-  <a href="#" class="task__icon delete-icon controls">&nbsp;</a>
-  </div>
-  </li>
-  `
+const controlTasks = function () {
+
+  // 1) LOAD THE TASKS
+  todoTasks.todos.forEach(todo => {
+    model.loadTask(todo);
+  })
+  // 2) RENDER THE TASKS
+  model.state.tasks.forEach(task => {
+    taskView.render(task);
+  })
+
 }
 
-const markup = tasks.map(task => {
-  return generateMarkup(task);
-});
+controlTasks();
 
 
-markup.forEach(item => {
-  taskContainer.insertAdjacentHTML('beforeend', item)
-})
+
