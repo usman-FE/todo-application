@@ -1,5 +1,5 @@
 import * as model from './model.js';
-import { todoTasks } from './todoData.js';
+import inputView from './views/inputView.js';
 import taskView from './views/taskView.js';
 
 
@@ -36,20 +36,39 @@ window.addEventListener('load', function () {
 /////////////////////////////////////////////////////
 
 
-const controlTasks = function () {
+const controlTasks = () => {
 
   // 1) LOAD THE TASKS
-  todoTasks.todos.forEach(todo => {
-    model.loadTask(todo);
-  })
+  const input = inputView.getInput();
+  if (!input)
+    return;
+  model.loadTask(input);
+
   // 2) RENDER THE TASKS
-  model.state.tasks.forEach(task => {
-    taskView.render(task);
-  })
+  taskView.render(model.state.tasks);
+}
+
+const controlCompleted = () => {
+  // 0) GET ELEMENT ID
+  const id = taskView.getID();
+  console.log(id);
+  model.getCompletedElement(id);
+
+  // 1) UPDATE THE TASK COMPLETED STATUS (IN STATE)
+  model.updateCompleted(model.state.tasks[0]);
+
+  // 2) UPDATE THE TASK VIEW
+  taskView.render(model.state.tasks);
 
 }
 
-controlTasks();
+const init = function () {
+  taskView.addHandlerRender(controlTasks);
+  inputView.addHandlerInput(controlTasks);
+  taskView.addHandlerCompletedTask(controlCompleted);
+}
+
+init();
 
 
 
