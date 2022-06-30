@@ -12,12 +12,7 @@ export const loadTask = (todo) => {
   state.id++;
 }
 
-export const getCompletedElement = (id) => {
-  const [compEl] = state.tasks.filter(task => task.id === id);
-  state.completed = compEl;
-}
-
-export const updateCompleted = (task) => {
-  const [change] = state.tasks.filter(item => item.id === task.id);
-  change.isCompleted = true;
+export const updateCompleted = (id) => {
+  const [completedTask] = state.tasks.filter(item => item.id === id);
+  completedTask.isCompleted = true;
 }

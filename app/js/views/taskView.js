@@ -1,7 +1,6 @@
 class TaskView {
   #parentElement = document.querySelector('.task__list');
   #data;
-  id;
 
   render(data) {
     this.#data = data;
@@ -20,8 +19,8 @@ class TaskView {
     this.#parentElement.addEventListener('click', function (e) {
       const btn = e.target.closest('.task__checkbox');
       if (!btn) return;
-      this.id = e.target.closest('.task__item').dataset.id;
-      handler();
+      const id = +e.target.closest('.task__item').dataset.id;
+      handler(id);
     })
   }
 

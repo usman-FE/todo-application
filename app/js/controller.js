@@ -48,14 +48,10 @@ const controlTasks = () => {
   taskView.render(model.state.tasks);
 }
 
-const controlCompleted = () => {
-  // 0) GET ELEMENT ID
-  const id = taskView.getID();
-  console.log(id);
-  model.getCompletedElement(id);
+const controlCompleted = (id) => {
 
   // 1) UPDATE THE TASK COMPLETED STATUS (IN STATE)
-  model.updateCompleted(model.state.tasks[0]);
+  model.updateCompleted(id);
 
   // 2) UPDATE THE TASK VIEW
   taskView.render(model.state.tasks);
