@@ -27,7 +27,6 @@ class TaskView {
     this.#parentElement.addEventListener('click', function (e) {
       const deleteBtn = e.target.closest('.task__delete');
       if (!deleteBtn) return;
-      console.log(deleteBtn);
       const id = +e.target.closest('.task__item').dataset.id;
       handler(id);
     });

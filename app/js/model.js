@@ -14,7 +14,7 @@ export const loadTask = (todo) => {
 };
 
 export const updateCompleted = (id) => {
-  const [completedTask] = state.tasks.filter((item) => item.id === id);
+  const [completedTask] = state.tasks.filter((task) => task.id === id);
   completedTask.isCompleted = true;
 };
 
@@ -23,6 +23,11 @@ export const setItemsLeft = () => {
 };
 
 export const deleteTask = (id) => {
-  const filtered = state.tasks.filter((item) => item.id !== id);
+  const filtered = state.tasks.filter((task) => task.id !== id);
+  state.tasks = filtered;
+};
+
+export const clearCompleted = () => {
+  const filtered = state.tasks.filter((task) => !task.isCompleted);
   state.tasks = filtered;
 };

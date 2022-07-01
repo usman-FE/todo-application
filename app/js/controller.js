@@ -2,6 +2,7 @@ import * as model from './model.js';
 import itemsLeftView from './views/itemsLeftView.js';
 import inputView from './views/inputView.js';
 import taskView from './views/taskView.js';
+import clearCompletedView from './views/clearCompletedView.js';
 
 const toggle = document.querySelector('#toggle');
 const body = document.querySelector('body');
@@ -76,12 +77,24 @@ const controlDeleteTask = (id) => {
   controlItemsLeft();
 };
 
+const controlClearCompleted = () => {
+  // 1) REMOVE THE COMPLETED TASKS FROM STATE
+  model.clearCompleted();
+
+  // 2) RE-RENDER THE TASKS
+  taskView.render(model.state.tasks);
+
+  // 3) RE-RENDER THE ITEMS LEFT
+  controlItemsLeft();
+};
+
 const init = () => {
   taskView.addHandlerRender(controlTasks);
   inputView.addHandlerInput(controlTasks);
   taskView.addHandlerCompletedTask(controlCompleted);
   itemsLeftView.addHandlerItemsLeftView(controlItemsLeft);
   taskView.addHandlerDeleteTask(controlDeleteTask);
+  clearCompletedView.addHandlerClearCompleted(controlClearCompleted);
 };
 
 init();
