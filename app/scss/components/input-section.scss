@@ -3,10 +3,12 @@
   margin-top: 5rem;
   border-radius: 5px;
   background-color: var(--field-bg);
+  transition: all 0.3s ease-in-out;
 
   &__circle {
     flex-grow: 0;
     padding: 2rem;
+    transition: all 0.3s ease-in-out;
     cursor: pointer;
   }
 
@@ -15,6 +17,7 @@
     height: 2.6rem;
     display: block;
     background: var(--circle-color);
+    transition: all 0.3s ease-in-out;
     mask-image: url('../images/circle.svg');
     mask-repeat: no-repeat;
     mask-size: 90%;
@@ -36,6 +39,8 @@
     font-family: inherit;
     font-size: 1.6rem;
     color: var(--text-color);
+    transition: all 0.3s ease-in-out;
+    padding: 2rem 0rem;
   }
 
   &__submit {

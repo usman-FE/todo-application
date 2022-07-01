@@ -9,19 +9,19 @@ class TaskView {
     this.#parentElement.insertAdjacentHTML('beforeend', markup);
   }
 
-
   addHandlerRender(handler) {
     handler();
   }
 
-
   addHandlerCompletedTask(handler) {
     this.#parentElement.addEventListener('click', function (e) {
       const btn = e.target.closest('.task__checkbox');
-      if (!btn) return;
+      const description = e.target.closest('.task__description');
+      console.log(e.target);
+      if (!btn && !description) return;
       const id = +e.target.closest('.task__item').dataset.id;
       handler(id);
-    })
+    });
   }
 
   #clearContainer() {
@@ -29,9 +29,11 @@ class TaskView {
   }
 
   #generateMarkup() {
-    return this.#data.map(task => {
-      return this.#generateMarkupPreview(task);
-    }).join('');
+    return this.#data
+      .map((task) => {
+        return this.#generateMarkupPreview(task);
+      })
+      .join('');
   }
 
   #generateMarkupPreview(task) {
@@ -41,7 +43,9 @@ class TaskView {
           <span class="${task.isCompleted ? 'task__checked' : ''}"></span>
           <a href="#" class="task__icon circle-icon">&nbsp;</a>
         </div>
-        <p class="task__description ${task.isCompleted ? 'task-done' : ''}">${task.title}</p>
+        <p class="task__description ${task.isCompleted ? 'task-done' : ''}">${
+      task.title
+    }</p>
         <div class="task__edit">
           <a href="#" class="task__icon edit-icon controls">&nbsp;</a>
         </div>
@@ -49,7 +53,7 @@ class TaskView {
           <a href="#" class="task__icon delete-icon controls">&nbsp;</a>
         </div>
       </li>
-    `
+    `;
   }
 }
 

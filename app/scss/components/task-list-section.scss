@@ -12,12 +12,14 @@
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     background-color: var(--field-bg);
+    transition: all 0.3s ease-in-out;
   }
 
   &__item {
     display: flex;
     align-items: center;
     border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s ease-in-out;
   }
 
   &__description {
@@ -25,6 +27,7 @@
     color: var(--text-color);
     font-weight: 400;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
   }
 
   &__icon {
