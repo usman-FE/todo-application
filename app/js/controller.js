@@ -1,7 +1,7 @@
 import * as model from './model.js';
+import itemsLeftView from './views/itemsLeftView.js';
 import inputView from './views/inputView.js';
 import taskView from './views/taskView.js';
-
 
 const toggle = document.querySelector('#toggle');
 const body = document.querySelector('body');
@@ -35,36 +35,53 @@ window.addEventListener('load', function () {
 // CONTROLLER LOGIC///////////////////////////////////
 /////////////////////////////////////////////////////
 
-
 const controlTasks = () => {
-
   // 1) LOAD THE TASKS
   const input = inputView.getInput();
-  if (!input)
-    return;
+  if (!input) return;
   model.loadTask(input);
 
   // 2) RENDER THE TASKS
   taskView.render(model.state.tasks);
-}
+
+  // 3) RE-RENDER ITEMS LEFT
+  controlItemsLeft();
+};
 
 const controlCompleted = (id) => {
-
   // 1) UPDATE THE TASK COMPLETED STATUS (IN STATE)
   model.updateCompleted(id);
 
   // 2) UPDATE THE TASK VIEW
   taskView.render(model.state.tasks);
+};
 
-}
+const controlItemsLeft = () => {
+  // 1) GET ITEMS FROM STATE
+  model.setItemsLeft();
+  const itemsLeft = model.state.itemsLeft;
 
-const init = function () {
+  // 2) RENDER ITEMS LEFT
+  itemsLeftView.render(itemsLeft);
+};
+
+const controlDeleteTask = (id) => {
+  // 1) DELETE THE TASK FROM STATE
+  model.deleteTask(id);
+
+  // 2) RE-RENDER THE TASKS
+  taskView.render(model.state.tasks);
+
+  // 3) RE-RENDER THE ITEMS LEFT
+  controlItemsLeft();
+};
+
+const init = () => {
   taskView.addHandlerRender(controlTasks);
   inputView.addHandlerInput(controlTasks);
   taskView.addHandlerCompletedTask(controlCompleted);
-}
+  itemsLeftView.addHandlerItemsLeftView(controlItemsLeft);
+  taskView.addHandlerDeleteTask(controlDeleteTask);
+};
 
 init();
-
-
-

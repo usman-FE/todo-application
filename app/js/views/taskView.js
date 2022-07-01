@@ -17,8 +17,17 @@ class TaskView {
     this.#parentElement.addEventListener('click', function (e) {
       const btn = e.target.closest('.task__checkbox');
       const description = e.target.closest('.task__description');
-      console.log(e.target);
       if (!btn && !description) return;
+      const id = +e.target.closest('.task__item').dataset.id;
+      handler(id);
+    });
+  }
+
+  addHandlerDeleteTask(handler) {
+    this.#parentElement.addEventListener('click', function (e) {
+      const deleteBtn = e.target.closest('.task__delete');
+      if (!deleteBtn) return;
+      console.log(deleteBtn);
       const id = +e.target.closest('.task__item').dataset.id;
       handler(id);
     });
