@@ -3,6 +3,7 @@ import itemsLeftView from './views/itemsLeftView.js';
 import inputView from './views/inputView.js';
 import taskView from './views/taskView.js';
 import clearCompletedView from './views/clearCompletedView.js';
+import filterView from './views/filterView.js';
 
 const toggle = document.querySelector('#toggle');
 const body = document.querySelector('body');
@@ -88,6 +89,10 @@ const controlClearCompleted = () => {
   controlItemsLeft();
 };
 
+const controlFilter = () => {
+  console.log('controller');
+}
+
 const init = () => {
   taskView.addHandlerRender(controlTasks);
   inputView.addHandlerInput(controlTasks);
@@ -95,6 +100,7 @@ const init = () => {
   itemsLeftView.addHandlerItemsLeftView(controlItemsLeft);
   taskView.addHandlerDeleteTask(controlDeleteTask);
   clearCompletedView.addHandlerClearCompleted(controlClearCompleted);
+  filterView.addHanderFilter(controlFilter);
 };
 
 init();
