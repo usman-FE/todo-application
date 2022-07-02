@@ -89,9 +89,10 @@ const controlClearCompleted = () => {
   controlItemsLeft();
 };
 
-const controlFilter = () => {
-  console.log('controller');
-}
+const controlActive = () => {
+  const active = model.getActive();
+  filterView.sendData(active);
+};
 
 const init = () => {
   taskView.addHandlerRender(controlTasks);
@@ -100,7 +101,7 @@ const init = () => {
   itemsLeftView.addHandlerItemsLeftView(controlItemsLeft);
   taskView.addHandlerDeleteTask(controlDeleteTask);
   clearCompletedView.addHandlerClearCompleted(controlClearCompleted);
-  filterView.addHanderFilter(controlFilter);
+  filterView.addHanderActiveFilter(controlActive);
 };
 
 init();

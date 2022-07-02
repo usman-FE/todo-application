@@ -46,13 +46,14 @@ class TaskView {
 
   #generateMarkupPreview(task) {
     return `
-      <li class="task__item collapsible" data-id="${task.id}">
+      <li class="task__item" data-id="${task.id}">
         <div class="task__checkbox">
           <span class="${task.isCompleted ? 'task__checked' : ''}"></span>
           <a href="#" class="task__icon circle-icon">&nbsp;</a>
         </div>
-        <p class="task__description ${task.isCompleted ? 'task-done' : ''}">${task.title
-      }</p>
+        <p class="task__description ${task.isCompleted ? 'task-done' : ''}">${
+      task.title
+    }</p>
         <div class="task__edit">
           <a href="#" class="task__icon edit-icon controls">&nbsp;</a>
         </div>

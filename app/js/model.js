@@ -31,3 +31,8 @@ export const clearCompleted = () => {
   const filtered = state.tasks.filter((task) => !task.isCompleted);
   state.tasks = filtered;
 };
+
+export const getActive = () => {
+  const active = state.tasks.filter((task) => !task.isCompleted);
+  return active;
+};
