@@ -36,3 +36,8 @@ export const getActive = () => {
   const active = state.tasks.filter((task) => !task.isCompleted);
   return active;
 };
+
+export const getCompleted = () => {
+  const completed = state.tasks.filter(task => task.isCompleted);
+  return completed;
+}

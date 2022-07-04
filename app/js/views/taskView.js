@@ -49,16 +49,15 @@ class TaskView {
       <li class="task__item" data-id="${task.id}">
         <div class="task__checkbox">
           <span class="${task.isCompleted ? 'task__checked' : ''}"></span>
-          <a href="#" class="task__icon circle-icon">&nbsp;</a>
+          <button class="task__icon circle-icon">&nbsp;</button>
         </div>
-        <p class="task__description ${task.isCompleted ? 'task-done' : ''}">${
-      task.title
-    }</p>
+        <p class="task__description ${task.isCompleted ? 'task-done' : ''}">${task.title
+      }</p>
         <div class="task__edit">
-          <a href="#" class="task__icon edit-icon controls">&nbsp;</a>
+          <button class="task__icon edit-icon controls">&nbsp;</button>
         </div>
         <div class="task__delete">
-          <a href="#" class="task__icon delete-icon controls">&nbsp;</a>
+          <button class="task__icon delete-icon controls">&nbsp;</button>
         </div>
       </li>
     `;

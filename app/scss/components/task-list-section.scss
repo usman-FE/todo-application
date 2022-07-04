@@ -91,6 +91,7 @@
   background-color: var(--text-color);
   visibility: visible;
   opacity: 1;
+  cursor: pointer;
 }
 
 // @media (hover: hover) {
@@ -119,6 +120,8 @@
 .circle-icon {
   mask-image: url('../images/circle.svg');
   mask-size: 90% !important;
+  border: none;
+  outline: none;
 
   @media only screen and (max-width: $sm) {
     mask-size: 75% !important;
