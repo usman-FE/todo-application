@@ -20,7 +20,7 @@ class FilterView {
     this.#data = data;
     const elems = this.#resetHiddenClass(this.#listContainer);
     const ids = this.#data.map((task) => task.id);
-    const actives = elems.filter((elem) => !ids.includes(+elem.dataset.id));
+    const actives = elems.filter((elem) => !ids.includes(elem.dataset.id));
     actives.forEach((item) => {
       item.classList.add('hidden');
     });
@@ -30,7 +30,7 @@ class FilterView {
     this.#data = data;
     const elems = this.#resetHiddenClass(this.#listContainer);
     const ids = this.#data.map((task) => task.id);
-    const completed = elems.filter((elem) => !ids.includes(+elem.dataset.id));
+    const completed = elems.filter((elem) => !ids.includes(elem.dataset.id));
     completed.forEach((item) => {
       item.classList.add('hidden');
     });

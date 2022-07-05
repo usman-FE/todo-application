@@ -29,5 +29,8 @@
     "last 1 version",
     "IE 11",
     "> 1%"
-  ]
+  ],
+  "dependencies": {
+    "uuid": "^8.3.2"
+  }
 }

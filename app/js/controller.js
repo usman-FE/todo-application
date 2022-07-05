@@ -50,6 +50,16 @@ const controlTasks = () => {
   controlItemsLeft();
 };
 
+const controlLocalStorageTasks = () => {
+
+  // 1) LOAD TASKS FROM LOCAL STORAGE
+  taskView.render(model.state.tasks);
+
+  // 2) RE-RENDER ITEMS LEFT
+  controlItemsLeft();
+
+}
+
 const controlCompleted = (id) => {
   // 1) UPDATE THE TASK COMPLETED STATUS (IN STATE)
   model.updateCompleted(id);
@@ -105,6 +115,7 @@ const controlCompletedFilter = () => {
 }
 
 const init = () => {
+  taskView.addHandlerLocalStorageRender(controlLocalStorageTasks);
   taskView.addHandlerRender(controlTasks);
   inputView.addHandlerInput(controlTasks);
   taskView.addHandlerCompletedTask(controlCompleted);
