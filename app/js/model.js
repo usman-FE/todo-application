@@ -2,7 +2,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const state = {
   tasks: [],
-  id: 1,
   itemsLeft: '',
 };
 
