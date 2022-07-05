@@ -23,7 +23,6 @@ class TaskView {
       const description = e.target.closest('.task__description');
       if (!btn && !description) return;
       const id = e.target.closest('.task__item').dataset.id;
-      console.log(id);
       handler(id);
     });
   }

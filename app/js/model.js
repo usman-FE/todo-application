@@ -63,4 +63,3 @@ const init = () => {
 }
 
 init();
-console.log(state.tasks);
