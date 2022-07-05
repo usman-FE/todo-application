@@ -15,7 +15,11 @@ export const loadTask = (todo) => {
 
 export const updateCompleted = (id) => {
   const [completedTask] = state.tasks.filter((task) => task.id === id);
-  completedTask.isCompleted = true;
+  if (completedTask.isCompleted) {
+    completedTask.isCompleted = false;
+  } else {
+    completedTask.isCompleted = true;
+  }
 };
 
 export const setItemsLeft = () => {
