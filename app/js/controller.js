@@ -40,8 +40,19 @@ window.addEventListener('load', function () {
 const controlTasks = () => {
   // 1) LOAD THE TASKS
   const input = inputView.getInput();
+  const updatedID = inputView.getID();
   if (!input) return;
-  model.loadTask(input);
+  // CHECK IF THE INPUT FIELD IS IN EDIT OR NEUTRAL STATE
+  if (!updatedID) {
+    // IF NEUTRAL STATE
+    model.loadTask(input);
+    inputView.clearInput();
+  } else {
+    // IF EDIT STATED
+    model.loadTask(input, updatedID);
+    inputView.clearInput();
+    inputView.clearModifiedHiddenInput();
+  }
 
   // 2) RENDER THE TASKS
   taskView.render(model.state.tasks);
@@ -58,6 +69,11 @@ const controlLocalStorageTasks = () => {
   // 2) RE-RENDER ITEMS LEFT
   controlItemsLeft();
 
+}
+
+const controlOutsideClick = () => {
+  inputView.clearInput();
+  inputView.clearModifiedHiddenInput();
 }
 
 const controlCompleted = (id) => {
@@ -87,6 +103,14 @@ const controlDeleteTask = (id) => {
   // 3) RE-RENDER THE ITEMS LEFT
   controlItemsLeft();
 };
+
+const controlEditTask = (id, task) => {
+  // 1) PUT THE ID ON HIDDEN INPUT
+  taskView.modifyHiddenInput(id);
+
+  // 2) PUT SELECTED TASK INTO THE ADD TASK FIELD
+  taskView.updateTaskField(task);
+}
 
 const controlClearCompleted = () => {
   // 1) REMOVE THE COMPLETED TASKS FROM STATE
@@ -125,6 +149,8 @@ const init = () => {
   filterView.addHanderActiveFilter(controlActive);
   filterView.addHanderAllFilter(controlAll);
   filterView.addHanderCompletedFilter(controlCompletedFilter);
+  taskView.addHandlerEditTask(controlEditTask);
+  inputView.addHandlerOutsideClickEdit(controlOutsideClick);
 };
 
 init();

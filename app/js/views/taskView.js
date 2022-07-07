@@ -1,5 +1,7 @@
 class TaskView {
   #parentElement = document.querySelector('.task__list');
+  #idField = document.querySelector('.id');
+  #inputField = document.querySelector('.input__field');
   #data;
 
   render(data) {
@@ -34,6 +36,25 @@ class TaskView {
       const id = e.target.closest('.task__item').dataset.id;
       handler(id);
     });
+  }
+
+  addHandlerEditTask(handler) {
+    this.#parentElement.addEventListener('click', function (e) {
+      const editBtn = e.target.closest('.task__edit');
+      if (!editBtn) return;
+      const id = e.target.closest('.task__item').dataset.id;
+      const task = e.target.closest('.task__item').querySelector('.task__description').innerText;
+      handler(id, task);
+    });
+  }
+
+  modifyHiddenInput(id) {
+    this.#idField.value = id;
+  }
+
+  updateTaskField(task) {
+    this.#inputField.value = task;
+    this.#inputField.focus();
   }
 
   #clearContainer() {

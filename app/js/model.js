@@ -5,13 +5,20 @@ export const state = {
   itemsLeft: '',
 };
 
-export const loadTask = (todo) => {
-  state.tasks.push({
-    title: todo,
-    isCompleted: false,
-    id: uuidv4(),
-  });
-  state.id++;
+export const loadTask = (todo, id) => {
+  if (!id) {
+    state.tasks.push({
+      title: todo,
+      isCompleted: false,
+      id: uuidv4(),
+    });
+  } else {
+    state.tasks.forEach((task) => {
+      if (!(task.id === id)) return;
+      task.title = todo;
+    });
+  }
+
   taskLocalStorage();
 };
 
