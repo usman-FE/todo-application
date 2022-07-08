@@ -48,7 +48,7 @@ const controlTasks = () => {
     model.loadTask(input);
     inputView.clearInput();
   } else {
-    // IF EDIT STATED
+    // IF EDIT STATE
     model.loadTask(input, updatedID);
     inputView.clearInput();
     inputView.clearModifiedHiddenInput();
@@ -62,19 +62,19 @@ const controlTasks = () => {
 };
 
 const controlLocalStorageTasks = () => {
-
   // 1) LOAD TASKS FROM LOCAL STORAGE
   taskView.render(model.state.tasks);
 
   // 2) RE-RENDER ITEMS LEFT
   controlItemsLeft();
-
-}
+};
 
 const controlOutsideClick = () => {
+  if (!model.state.isEditing) return;
   inputView.clearInput();
   inputView.clearModifiedHiddenInput();
-}
+  model.setEditState(false);
+};
 
 const controlCompleted = (id) => {
   // 1) UPDATE THE TASK COMPLETED STATUS (IN STATE)
@@ -110,7 +110,10 @@ const controlEditTask = (id, task) => {
 
   // 2) PUT SELECTED TASK INTO THE ADD TASK FIELD
   taskView.updateTaskField(task);
-}
+
+  // 3) CHANGE TO EDIT STATE
+  model.setEditState(true);
+};
 
 const controlClearCompleted = () => {
   // 1) REMOVE THE COMPLETED TASKS FROM STATE
@@ -131,12 +134,12 @@ const controlActive = () => {
 const controlAll = () => {
   const all = model.state.tasks;
   filterView.setAll(all);
-}
+};
 
 const controlCompletedFilter = () => {
   const completed = model.getCompleted();
   filterView.setCompleted(completed);
-}
+};
 
 const init = () => {
   taskView.addHandlerLocalStorageRender(controlLocalStorageTasks);

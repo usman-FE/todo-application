@@ -22,19 +22,19 @@ class inputView {
   addHandlerOutsideClickEdit(handler) {
     window.addEventListener('click', function (e) {
       const field = e.target.closest('.input-section');
-      if (field) return;
+      const editBtn = e.target.closest('.task__edit');
+      if (field || editBtn) return;
       handler();
-    })
+    });
   }
 
   clearInput() {
-    return this.#parentElement.querySelector('.input__field').value = '';
+    return (this.#parentElement.querySelector('.input__field').value = '');
   }
 
   clearModifiedHiddenInput() {
     this.#idField.value = '';
   }
-
 }
 
-export default new inputView;
+export default new inputView();

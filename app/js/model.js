@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 export const state = {
   tasks: [],
   itemsLeft: '',
+  isEditing: false,
 };
 
 export const loadTask = (todo, id) => {
@@ -24,7 +25,7 @@ export const loadTask = (todo, id) => {
 
 const taskLocalStorage = () => {
   localStorage.setItem('tasks', JSON.stringify(state.tasks));
-}
+};
 
 export const updateCompleted = (id) => {
   const [completedTask] = state.tasks.filter((task) => task.id === id);
@@ -58,15 +59,19 @@ export const getActive = () => {
 };
 
 export const getCompleted = () => {
-  const completed = state.tasks.filter(task => task.isCompleted);
+  const completed = state.tasks.filter((task) => task.isCompleted);
   return completed;
-}
+};
 
 const init = () => {
   const tasks = localStorage.getItem('tasks');
   if (tasks) {
     state.tasks = JSON.parse(tasks);
   }
-}
+};
+
+export const setEditState = (isEditing) => {
+  state.isEditing = isEditing;
+};
 
 init();
